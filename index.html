@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800&family=Roboto+Slab:wght@200;300;400;600;800;900&family=Rubik:wght@500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./CSS/style.css" />
+  </head>
+  <body>
+    <h2>HW SVG</h2>
+    <div class="wrapper">
+      <button class="accordion">task 1</button>
+      <div class="panel">
+        <h3>Теория к заданию</h3>
+        <p>
+          SASS и SCSS - в чем разница? Исторически SCSS — "диалект" языка SASS.
+          Но SASS не поддерживается разработчиками, в отличие от SCSS. Поэтому
+          иногда возникает путаница в терминах - говорят о SASS, а подразумевают
+          именно SCSS, как его разновидность. И хотя это похожие языки, у SASS
+          более лаконичный стиль (например нет точек с запятой) и по этой
+          причине он не совместим с css. В то время как внутри SCSS можно
+          вставлять нативный код css без каких-либо проблем. <br /><br />
+
+          Далее в описании и задачах везде подразумевается только синтаксис
+          SCSS. <br /><br />
+
+          Синтаксис объявления переменной - знак $ перед именем, затем идет имя
+          переменной, двоеточие, значение и точка с запятой.<br /><br />
+
+          Синтаксис вызова переменной в SCSS - знак $ перед именем, затем идет
+          имя переменной вместо значения. И точка с запятой в конце.<br /><br />
+
+          Пример объявления в глобальной области видимости и использования
+          переменной с именем main-color и значения #fff :<br /><br />
+        </p>
+        <p class="inf">
+          $main-color: #fff; <br />
+          a { <br />
+            color: $main-color; <br />
+          }
+        </p>
+        <p>Скомпилированный код:</p>
+        <p class="inf">
+          a { <br />
+             color: #fff; <br />
+          }
+        </p>
+        <h4>Задание</h4>
+        <p class="bg">
+          <b>.html</b> <br />
+          <br />
+          &lt;button type=&quot;button&quot;
+          class=&quot;btn&quot;&gt;Ok&lt;/button&gt;
+        </p>
+        <p>
+          Замени все цвета в свойствах background-color, color и border на SCSS
+          переменные в глобальной области видимости. Для этого:
+        </p>
+        <ol>
+          <li>
+            Напиши три переменные в scss c именами blue, lightBlue и white.
+          </li>
+          <li>Задай этим переменным значения:</li>
+          <ul>
+            <li>для blue значение цвета #6610f2;</li>
+            <li>для lightBlue значение цвета #007bff;</li>
+            <li>для white значение цвета #fff.</li>
+          </ul>
+          <li>
+            Для css свойств background-color, color и border замени значения
+            цвета на имена переменных.
+          </li>
+        </ol>
+
+        <p class="bg">
+          <b>.SCSS</b> <br /><br />
+          .btn { <br />
+            padding: .25rem 1.75rem; <br />
+            color: #fff; <br />
+            background-color: #007bff; <br />
+            border: #6610f2; <br />
+            cursor: pointer; <br />
+          }<br /><br />
+
+          .btn:hover,<br />
+          .btn:focus {<br />
+            background-color: #6610f2;<br />
+          }
+        </p>
+        <h4>Ответ:</h4>
+        <p></p>
+      </div>
+
+      <button class="accordion">task 2</button>
+      <div class="panel">
+        <h3>Теория к заданию</h3>
+        <p>
+          Если переменную SCSS задать внутри селектора, то такая переменная
+          будет доступна только для этого селектора. Это называется 'переменная
+          находится в локальной области видимости'.
+          <br /><br />
+          Пример объявления в локальной области видимости и использования
+          переменной с именем main-color и значения #fff :
+        </p>
+        <p class="bg">
+          a { <br />
+          $main-color: #fff; <br />
+           color: $main-color; <br />
+          }
+        </p>
+        <p>Скомпилированный код:</p>
+        <p class="bg">
+          a { <br />
+           color: #fff; <br />
+          }
+        </p>
+        <p class="warning">
+          Если переменную объявить ПОСЛЕ ее использования, то такой код не
+          скомпилируется. <br />
+          <br />
+          Так делать нельзя: a { <br />
+            color: $main-color; <br />
+            $main-color: #fff; <br />
+          }
+        </p>
+
+        <h4>Задание</h4>
+        <p>
+          Задай локальную переменную с именем diameter в локальной области
+          видимости селектора .up. Задай значение для переменной с именем
+          diameter такое, как у свойства width и height этого селектора.
+          <br /><br />
+
+          Замени значение свойств width и height селектора .up на переменную с
+          именем diameter.
+        </p>
+        <p class="bg">
+          <b>.HTML</b> <br /><br />&lt;a href=&quot;#up&quot;
+          class=&quot;up&quot;&gt;Вверх&lt;/a&gt;
+        </p>
+        <p class="bg">
+          $blue: #6610f2; <br />
+          $lightBlue: #007bff;<br />
+          $white: #fff;<br /><br />
+
+          .up {<br />
+            display: flex;<br />
+            justify-content: center;<br />
+            align-items: center;<br />
+            color: $white;<br />
+            background-color: $lightBlue;<br />
+            border: #6610f2;<br />
+            cursor: pointer;<br />
+            border-radius: 50%;<br /><br />
+          /* Измени код под этой строкой */ <br />
+            width: 80px;<br />
+            height: 80px;<br />
+          }<br /><br />
+
+          .up:hover,<br />
+          .up:focus {<br />
+           background-color: $blue;<br />
+          }
+        </p>
+        <h4>Ответ:</h4>
+        <p></p>
+      </div>
+
+      <button class="accordion">task 3</button>
+      <div class="panel">
+        <h3>Теория к заданию</h3>
+        Директива @extend используется для повторного использования уже
+        существующих стилей. <br /><br />
+
+        Пример:
+        <p class="bg">
+          .link { <br />
+           text-decoration: none; <br />
+           color: currentColor; <br />
+          } <br /><br />
+
+          a {<br />
+           @extend .link;<br />
+          }
+        </p>
+        <h4>Задание</h4>
+        <p>
+          В scss коде задан селектор .circle для описания круга диаметром 80px.
+          С помощью директивы @extend примени правила для создания круга
+          селектору .up.
+        </p>
+        <p class="bg">
+          <b>.HTML</b> <br /><br />&lt;a href=&quot;#up&quot;
+          class=&quot;up&quot;&gt;Вверх&lt;/a&gt;
+        </p>
+        <p class="bg">
+          <b>.SCSS</b> <br /><br />
+          $blue: #6610f2;<br />
+          $lightBlue: #007bff;<br />
+          $white: #fff;<br /><br />
+
+          .circle {<br />
+            $diameter: 80px;<br />
+            width: $diameter;<br />
+            height: $diameter;<br />
+            border-radius: 50%;<br />
+          } <br /><br />
+
+          .up { display: flex;<br />
+            justify-content: center;<br />
+            align-items: center;<br />
+            color: $white;<br />
+            background-color: $lightBlue;<br />
+            border: #6610f2;<br />
+            cursor: pointer;<br /><br />
+          /* Добавь код под этой строкой */<br />
+
+          }<br /><br />
+
+          .up:hover,<br />
+          .up:focus {<br />
+            background-color: $blue;<br />
+          }
+        </p>
+        <h4>Ответ:</h4>
+        <p></p>
+      </div>
+      <button class="accordion">task 4</button>
+      <div class="panel">
+        <h3>Теория к заданию</h3>
+        <p>
+          Плейсхолдер <b>(placeholder)</b> - произвольное имя селектора с
+          обязательным символом % в начале. <br />
+
+          Вызов плейсхолдера происходит с помощью директивы
+          <b>@extend</b> внутри селектора. <br />
+
+          Пример объявления плейсхолдера и последующего вызова:
+        </p>
+        <p class="bg">
+          %link { <br />
+            text-decoration: none; <br />
+            color: currentColor; <br />
+          } <br /><br />
+
+          a { <br />
+            @extend %link; <br />
+          }
+        </p>
+        <h4>Задание</h4>
+        <p>
+          В scss коде задан селектор .circle для описания круга диаметром 80px.
+          Замени селектор на плейсхолдер с названием circle. С помощью директивы
+          @extend и плейсхолдера примени правила для создания круга селектору
+          .up.
+        </p>
+        <p class="bg">
+          <b>.HTML</b> <br /><br />&lt;a href=&quot;#up&quot;
+          class=&quot;up&quot;&gt;Вверх&lt;/a&gt;
+        </p>
+        <p class="bg">
+          <b>.SCSS</b> <br /><br />
+          $blue: #6610f2; <br />
+          $lightBlue: #007bff;<br />
+          $white: #fff;<br /><br />
+
+          /* Измени код под этой строкой */<br />
+          .circle {<br />
+            $diameter: 80px;<br />
+            width: $diameter;<br />
+            height: $diameter;<br />
+            border-radius: 50%;<br />
+          }<br /><br />
+
+          .up {<br />
+            display: flex;<br />
+            justify-content: center;<br />
+            align-items: center;<br />
+            color: $white;<br />
+            background-color: $lightBlue;<br />
+            border: #6610f2;<br />
+            cursor: pointer;<br />
+          /* Добавь код под этой строкой */<br /><br />
+
+          }<br /><br />
+
+          .up:hover,<br />
+          .up:focus {<br />
+            background-color: $blue;<br />
+          }
+        </p>
+        <h4>Ответ:</h4>
+        <p></p>
+      </div>
+      <button class="accordion">task 5</button>
+      <div class="panel">
+        <h3>Теория к заданию</h3>
+        <p>
+          Директива <b>@mixin</b>, как и плейсхолдеры, позволяет создавать
+          готовые наборы свойств, но с различными значениями, в зависимости от
+          полученных аргументов при вызове миксина. <br /><br />
+
+          Синтаксис состоит из объявления директивы <b>@mixin</b>, затем
+          название миксина, затем круглые скобки с параметрами - переменной scss
+          (или переменными через запятую). Далее идет описание css правил внутри
+          фигурных скобок, где в качестве значения может выступать переменная из
+          круглых скобок (параметр). <br /><br />
+
+          Пример как с помощью миксина задать два квадрата шириной и высотой
+          100px для селектора .box и шириной и высотой 200px для селектора
+          big-box:
+        </p>
+        <p class="bg">
+          @mixin square($line) { <br />
+            width: $line;<br />
+            height: $line;<br />
+          }<br /><br />
+
+          .box {<br />
+            @include square(100px);<br />
+          }<br />
+          .big-box {<br />
+            @include square(200px);<br />
+          }
+        </p>
+        <p>Скомпилированный код:</p>
+        <p class="bg">
+          .box {<br />
+            width: 100px;<br />
+            height: 100px;<br />
+          } <br />
+          .big-box { <br />
+            width: 200px;<br />
+            height: 200px;<br />
+          }
+        </p>
+        <h4>Задание</h4>
+        <p>
+          Задан плейсхолдер %circle с размером в 80px. Замени плейсхолдер
+          %circle на миксин circle, который сможет получать любые размеры
+          диаметра. <br /><br />Вызови миксин circle в селекторе .up со
+          значением 100px;
+        </p>
+        <p class="bg">
+          <b>.HTML</b> <br /><br />&lt;a href=&quot;#up&quot;
+          class=&quot;up&quot;&gt;Вверх&lt;/a&gt;
+        </p>
+        <p class="bg">
+          <b>.SCSS</b> <br /><br />
+          $blue: #6610f2; <br />
+          $lightBlue: #007bff;<br />
+          $white: #fff;<br /><br />
+
+          /* Измени код под этой строкой */<br />
+          %circle {<br />
+            $diameter: 80px;<br />
+            width: $diameter;<br />
+            height: $diameter;<br />
+            border-radius: 50%;<br />
+          }<br /><br />
+
+          .up {<br />
+            display: flex;<br />
+            justify-content: center;<br />
+            align-items: center;<br />
+            color: $white;<br />
+            background-color: $lightBlue;<br />
+            border: #6610f2;<br />
+            cursor: pointer;<br /><br />
+          /* Измени код под этой строкой */<br />
+            @extend %circle;<br />
+          }<br />
+          <br />
+          .up:hover,<br />
+          .up:focus {<br />
+            background-color: $blue;<br />
+          }
+        </p>
+        <h4>Ответ:</h4>
+        <p></p>
+      </div>
+      <button class="accordion">task 6</button>
+      <div class="panel">
+        <h3>Теория к заданию</h3>
+        <p>
+          В SCSS можно вкладывать одно правило в другое, что при компиляции
+          приведет к отношению селекторов родитель и потомок на любом уровне
+          вложенности. <br /><br />
+
+          <b>Пример:</b>
+        </p>
+        <p class="bg">
+          &lt;section&gt; <br />
+           &lt;div class=&quot;first&quot;&gt;<br />
+            &lt;h4&gt;Заголовок&lt;/h4&gt;<br />
+             &lt;div&gt;Непрямой потомок section&lt;/div&gt;<br />
+            &lt;/div&gt;<br />
+           &lt;div class=&quot;first&quot;&gt;1&lt;/div&gt;<br />
+          &lt;/section&gt;<br />
+        </p>
+        <p class="bg">
+          section { <br />
+            div { <br />
+            } <br />
+            h4 { <br />
+            } <br />
+          }
+        </p>
+        <p><b>Скомпилированный код:</b></p>
+        <p class="bg">
+          section div { <br />
+          } <br /><br />border section h4 {<br />
+          }
+        </p>
+        <h4>Задание</h4>
+        <p>
+          В редакторе css дан код. Перепиши этот код используя синтаксис scss
+          для вложенности селекторов. <br /><br />
+          <b>Для этого:</b>
+        </p>
+        <ul>
+          <li>
+            размести селектор label без правил и внутри него размести селектор
+            span с правилом { color: #888; };
+          </li>
+          <li>
+            размести селектор label:focus-within без правил и внутри него
+            размести селектор span с правилом { color: green; } .
+          </li>
+        </ul>
+
+        <p class="bg">
+          <b>.HTML</b> <br /><br />
+          &lt;label&gt; <br />
+             &lt;span&gt;Имя&lt;/span&gt;<br />
+             &lt;input type=&quot;text&quot; name=&quot;name&quot;
+          placeholder=&quot;Имя&quot; /&gt;<br />
+          &lt;/label&gt; <br />
+        </p>
+        <p class="bg">
+          <b>.SCSS</b> <br /><br />
+          label span { <br />
+             color: #888;<br />
+          }<br /><br />brbr label:focus-within span {<br />
+             color: green;<br />
+          }
+        </p>
+        <h4>Ответ:</h4>
+        <p></p>
+      </div>
+      <button class="accordion">task 7</button>
+      <div class="panel">
+        <h3>Теория к заданию</h3>
+        <p>
+          Селектор элемента и пcевдоэлемента (псевдокласса) должны быть одной
+          строкой. Для реализации такой возможности в scss с помощью синтаксиса
+          вложения используют оператор <b>&</b> <br /><br />
+
+          <b>Пример</b>:
+        </p>
+        <p class="bg">
+          a { <br />
+            color: blue;<br />
+            &:hover {<br />
+             color: blue;<br />
+           } <br />
+          }
+        </p>
+        <p>Скомпилированный код:</p>
+        <p class="bg">
+          a { <br />
+            color: blue;<br />
+          } <br /><br />
+            a:hover {<br />
+            color: blue; <br />
+          }
+        </p>
+
+        <h4>Задание</h4>
+        <p>
+          В редакторе css дан код scss. Используй <b>&</b> для конкатенации
+          <b>label</b> и псевдокласса <b>:focus-within</b>. Перепиши код так,
+          чтобы получить вложенность селектора span внутри селектора
+          <b>label</b> согласно возможностям синтаксиса scss. Селектор
+          <b>label</b> должен быть записан только один раз. <br /><br />
+
+          В редакторе <b>css</b> дан код. Перепиши этот код используя синтаксис
+          <b>scss</b> для вложенности и склейки селекторов. <br /><br />
+
+          Для этого размести селектор <b>label</b> без правил и внутри него
+          размести:
+        </p>
+        <ul>
+          <li>селектор span с правилом { color: #888; };</li>
+          <li>
+            селектор &:focus-within без правил и внутри него размести селектор
+            span с правилом { color: green; }.
+          </li>
+        </ul>
+        <p class="bg">
+          <b>.HTML</b> <br /><br />
+          &lt;label&gt; <br />
+             &lt;span&gt;Имя&lt;/span&gt;<br />
+             &lt;input type=&quot;text&quot; name=&quot;name&quot;
+          placeholder=&quot;Имя&quot; /&gt;<br />
+          &lt;/label&gt; <br />
+        </p>
+        <p class="bg">
+          <b>.SCSS</b> <br /><br />
+          label span { <br />
+            color: #888;<br />
+          } <br /><br />
+          label:focus-within span {<br />
+            color: green;<br />
+          }
+        </p>
+        <h4>Ответ:</h4>
+        <p></p>
+      </div>
+      <button class="accordion">task 8</button>
+      <div class="panel">
+        <h3>Теория к заданию</h3>
+        <p>
+          Синтаксис задания карты - объявление переменной SCSS со значением -
+          круглыми кавычками и парами ключ - значение внутри круглых кавычек.
+          Пары ключ-значение разделяются двоеточием и заканчиваются запятой
+          (включая последнюю пару). Ключ (то что слева от двоеточия) - находится
+          в одинарных кавычках. <b>Пример</b>:
+        </p>
+        <p class="bg">
+          $weekdays: ( <br />
+            'primary': grey,<br />
+            'accent': slategraybr <br />
+          );
+        </p>
+        <p>
+          Вызов значения осуществляется с помощью встроенной SASS-функции
+          map-get(имя_карты, имя_свойства). Пример:
+        </p>
+        <p class="bg">
+          $weekdays: ( <br />
+            'primary': grey,<br />
+            'accent': slategray<br />
+          );<br /><br />
+
+          p {<br />
+            color: map-get($weekdays, 'primary');<br />
+          }<br />
+        </p>
+        <p>
+          Карты удобны для создания темы сайта. В коде ниже рассмотрен пример
+          как с помощью карт создаются наборы тем для обычного и праздничного
+          оформления сайта. Замену значений переменных с помощью map сделать
+          довольно легко, при этом основной код не изменяется.
+        </p>
+        <p>
+          // карта для обычной темы $weekdays: (<br />
+            'primary': grey,<br />
+            'accent': slategray,<br />
+          );<br /><br />
+
+          // карта для праздничной темы<br />
+          $holidays: (<br />
+            'primary': orange,<br />
+            'accent': red,<br />
+          );
+          <br /><br />
+          // Применяем обычную тему: $weekdays<br />
+          $main: map-get($weekdays, 'primary');<br />
+          $link: map-get($weekdays, 'accent');<br /><br />
+
+          // Применяем праздничную тему:: $holidays<br />
+          // $main: map-get($holidays, 'primary');<br />
+          // $link: map-get($holidays, 'accent');<br /><br />
+
+          p {<br />
+            color: $main;<br />
+          }<br /><br />
+
+          a {<br />
+            color: $link;<br />
+          }
+        </p>
+        <p><b>Скомпилированный код:</b></p>
+        <p class="bg">
+          p { <br />
+            color: grey;<br />
+          }<br /><br />
+          a {<br />
+            color: slategray;<br />
+          }
+        </p>
+        <h4>Задание</h4>
+        <p>
+          Для содержимого редактора html написан код scss с картой цвета. C
+          помощью встроенной SASS-функции map-get(имя_карты, имя_свойства) задай
+          цвет текста элемента label согласно тексту атрибута for , т.е. для
+          id-red необходимо из карты $rgb задать значение свойства red, для
+          id-green - значение green и т.д.
+        </p>
+        <p class="bg">
+          <b>.HTML</b> <br /><br />
+          &lt;form action=&quot;javascript:void(0);&quot;
+          id=&quot;id-radio&quot;&gt;<br />
+                &lt;div&gt;<br />
+                      &lt;label for=&quot;id-red&quot;&gt;red&lt;/label&gt;<br />
+                      &lt;label
+          for=&quot;id-green&quot;&gt;green&lt;/label&gt;<br />
+                      &lt;label for=&quot;id-blue&quot;&gt;blue&lt;/label&gt;<br />
+                &lt;/div&gt;<br />
+                &lt;div&gt;<br />
+                &lt;input id=&quot;id-red&quot; name=&quot;colors&quot;
+          type=&quot;radio&quot; value=&quot;red&quot; /&gt;<br />
+                &lt;input<br />
+                      id=&quot;id-green&quot;<br />
+                      name=&quot;colors&quot;<br />
+                      type=&quot;radio&quot;<br />
+                      value=&quot;green&quot;<br />
+                /&gt;<br />
+                &lt;input id=&quot;id-blue&quot; name=&quot;colors&quot;
+          type=&quot;radio&quot; value=&quot;blue&quot; /&gt;<br />
+                &lt;/div&gt;<br />
+          &lt;/form&gt;<br />
+          <br />
+          &lt;button form=&quot;id-radio&quot;
+          type=&quot;submit&quot;&gt;Отправить&lt;/button&gt;<br />
+          &lt;button form=&quot;id-radio&quot;
+          type=&quot;reset&quot;&gt;Обновить&lt;/button&gt;
+        </p>
+        <p class="bg">
+          body { <br />
+          text-align: center;<br />
+          }<br /><br />
+
+          $rgb: (<br />
+            'red': #f00,<br />
+            'green': #080,<br />
+            'blue': #00f,<br />
+          );<br /><br />
+
+          label[for="id-red"] {<br />
+
+          }<br /><br />
+
+          label[for="id-green"] {<br /><br />
+
+          }<br /><br />
+
+          label[for="id-blue"] {<br /><br />
+
+          }
+        </p>
+        <h4>Ответ:</h4>
+        <p></p>
+      </div>
+      <button class="accordion">task 9</button>
+      <div class="panel">
+        <h3>Теория к заданию</h3>
+        <ul>
+          <li>
+            поддержка стандартных операций: +, -, *, / и % (остаток от деления
+            по модулю);
+          </li>
+          <li>нельзя смешивать типы единиц;</li>
+          <li>нельзя использовать нативные css переменные;</li>
+          <li>можно использовать нативную функцию calc().</li>
+        </ul>
+        <p><b>Пример:</b></p>
+        <p class="bg">
+          $gap: 8px; <br /><br />
+
+          p {<br />
+            text-indent: 3 * $gap;<br />
+            padding-top: $gap + 2px;<br />
+            padding-bottom: $gap - 2px;<br />
+            padding-right: $gap / 2;<br />
+            padding-left: $gap % 3;<br />
+          }
+        </p>
+        <p>
+          Пример использования математических операций для создания с помощью
+          миксина кнопок с пропорциональными размерами отступов, относительно
+          размера шрифта.
+        </p>
+        <p>
+          &lt;button class=&quot;small-btn&quot;&gt;ok&lt;/button&gt; <br />
+          &lt;button class=&quot;middle-btn&quot;&gt;ok&lt;/button&gt; <br />
+          &lt;button class=&quot;big-btn&quot;&gt;ok&lt;/button&gt; <br />
+        </p>
+        <p class="bg">
+          @mixin button($size) { <br />
+            padding: 0.25 * $size 1.75 * $size;<br />
+            font-size: $size;<br />
+          }<br />
+          button {<br />
+            text-transform: uppercase;<br />
+          }<br />
+          .small-btn {<br />
+            @include button(16px);<br />
+          }<br />
+          .middle-btn {<br />
+            @include button(20px);<br />
+          }<br />
+          .big-btn {<br />
+            @include button(28px);<br />
+          }
+        </p>
+        <p><b>Скомпилированный код:</b></p>
+        <p>
+          button { <br />
+            text-transform: uppercase;<br />
+          }<br /><br />
+
+          .small-btn {<br />
+            padding: 4px 28px;<br />
+          font-size: 16px;<br />
+          }<br /><br />
+
+          .middle-btn {<br />
+            padding: 5px 35px;<br />
+            font-size: 20px;<br />
+          }
+        </p>
+        <h4>Задание</h4>
+        <p>
+          Для миксина center задай значения свойствам margin-top и margin-left с
+          помощью оператора деления (делить на -2) так, чтобы прямоугольник
+          элемента с классом box оказался ровно по центру родительского блока.
+          <br /><br />
+
+          PS Деление на -2 заменит деление на 2 и затем умножение на -1.<br /><br />
+
+          Используй переменные $width и $height.
+        </p>
+        <p class="bg">
+          <b>.HTML</b><br /><br />&lt;div class=&quot;box&quot;&gt;&lt;/div&gt;
+        </p>
+        <p class="bg">
+          <b>.SCSS</b> <br /><br />
+          @mixin center ($width, $height) { <br />
+            position: absolute; <br />
+            width: $width; <br />
+            height: $height; <br />
+            top: 50%; <br />
+            left: 50%; <br />
+          <br />
+
+          } <br />
+          <br />
+
+          .box { <br />
+            background: gold; <br />
+            @include center(100px, 50px); <br />
+          }
+        </p>
+        <h4>Ответ:</h4>
+        <p></p>
+      </div>
+      <button class="accordion">task 10</button>
+      <div class="panel">
+        <h3>Теория к заданию</h3>
+        Фрагмент — это простой SCSS-файл, который компилируется не в отдельный
+        CSS файл, а является частью (фрагментом) какого-то CSS файла или файлов.
+        <br /><br />
+
+        Синтаксис фрагмента - нижнее подчеркивание перед именем файла (по этому
+        признаку компилятор понимает что создавать CSS файл из этого SCSS файла
+        не надо).<br /><br />
+
+        <b>Пример названия файлов-фрагмента:</b><br /><br />
+        <p class="bg">
+          _normalize.scss <br />
+          _button.scss
+        </p>
+        <p>
+          Для включения фрагментов в один общий файл в SCSS существует директива
+          @import. При ее использовании необходимо указать путь к файлу и
+          название файла без подчеркивания и даже без расширения SCSS
+          <br /><br />
+
+          <b>Пример:</b>
+        </p>
+        <p class="bg">
+          @import 'normalize'; <br />
+          @import 'button';
+        </p>
+        <p>
+          В скомпилированном коде CSS правила обоих файлов объединятся в один
+          общий файл так, что порядок импорта файлов совпадет с порядком CSS
+          правил. Иначе говоря нормализацию стилей, фрагмент с SCSS переменными
+          следует импортировать в первую очередь.
+        </p>
+        <h4>Задание</h4>
+        <p>Дан список файлов SCSS:</p>
+        <p class="bg">
+          _normalizer.scss <br />
+          _variables.scss <br />
+          _header.scss <br />
+          about.scss <br />
+          contacts.scss
+        </p>
+        <ol>
+          <li>
+            Напиши список импорта всех фрагментов (но не файлов!) в правильном
+            порядке.
+          </li>
+          <li>
+            Для импорта используй название фрагментов без указания расширения
+            файла и подчеркивания.
+          </li>
+        </ol>
+
+        <p class="bg">@import '';</p>
+        <h4>Ответ:</h4>
+        <p></p>
+      </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
